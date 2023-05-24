@@ -1,0 +1,75 @@
+problem statement:  Descriptive Statistics - Measures of Central Tendency and variability Perform the following operations on any open source dataset (e.g., data.csv) 1. Provide summary statistics (mean, median, minimum, maximum, standard deviation) for a dataset (age, income etc.) with numeric variables grouped by one of the qualitative (categorical) variable. For example, if your categorical variable is age groups and quantitative variable is income, then provide summary statistics of income grouped by the age groups. Create a list that contains a numeric value for each response to the categorical variable. 2. Write a Python program to display some basic statistical details like percentile, mean, standard deviation etc. of the species of ‘Iris-setosa’, ‘Iris-versicolor’ and ‘Iris-versicolor’ of iris.csv dataset. Provide the codes with outputs and explain everything that you do in this step.
+
+code:
+
+PART 1:
+
+import pandas as pd
+import numpy as np
+
+df=pd.read_csv("HR.csv")
+df
+
+df.columns
+
+#find mean,median,mode,SD of age and income
+
+df.Age.mean()
+df.MonthlyIncome.mean()
+
+df.Age.median()
+df.MonthlyIncome.median()
+
+df.Age.mode()
+df.MonthlyIncome.mode()
+
+df.Age.min()
+df.MonthlyIncome.min()
+
+df.Age.max()
+df.MonthlyIncome.max()
+
+#categorical to quantitative-
+
+df['BusinessTravel'].replace({'Travel_Rarely':0, 'Travel_Frequently':1}, inplace=True)
+df['Department'].replace({'Sales':0, 'Reasearch & Department':1}, inplace=True)
+df['Attrirtion'].replace({'Yes':0, 'No':1}, inplace=True)
+df['EducationField'].replace({'Life Sciences':0, 'Medical':1}, inplace=True)
+
+---------------------------------------------------------------------------------------------
+PART 2:
+
+import seaborn as sb
+import matplotlib.pyplot as plt
+
+df=pd.read_csv("iris.csv")
+df
+
+df['species'].value_counts()
+
+df.rename(columns=
+"sepal_length" : "Slength",	"sepal_width" : "Swidth"	,"petal_length": "Plength",	"petal_width":	"Pwidth"}
+inplace=True}
+df
+
+df.Slength.sum()
+df.Slength.mean()
+df.Slength.median()
+
+df.isnull()
+
+a=df['species']=='setosa'
+df[a].describe()
+
+a=df['species']=='virginica'
+df[a].describe()
+
+a=df['species']=='versicolor'
+df[a].describe()
+
+
+
+
+
+
+
