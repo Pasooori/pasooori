@@ -1,0 +1,73 @@
+import numpy as np 
+import pandas as pd 
+import seaborn as sns 
+import matplotlib.pyplot as plt 
+
+df = pd.read_csv("Iris.csv")
+df
+
+df=pd.DataFrame(df) 
+df.head() 
+
+df.describe()
+
+df.info()
+
+df.columns
+
+df[ 'SepalLengthCm'].max() 
+
+df[ 'SepalLengthCm'].min()
+
+df[ 'SepalLengthCm'].hist(bins=30) 
+
+df['PetalLengthCm'].max() 
+df['PetalLengthCm'].min() 
+df['PetalLengthCm'].hist (bins=30) 
+
+df['PetalWidthCm'].max() 
+df['PetalWidthCm'].min() 
+df['PetalWidthCm'].hist(bins=30) 
+
+df[ 'SepalWidthCm'].max() 
+df[ 'SepalWidthCm'].min() 
+df[ 'SepalWidthCm'].hist(bins=30)
+
+
+df[ 'Species'].value_counts() 
+
+
+sns.boxplot(x='PetalLengthCm', data=df) 
+
+
+sns.boxplot(x='PetalWidthCm', data=df) 
+
+col = ['SepalLengthCm', 'SepalWidthCm', 'PetalLengthCm','PetalWidthCm']
+df.boxplot(col)
+
+df.columns
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

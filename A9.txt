@@ -1,0 +1,48 @@
+import numpy as np
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+df1 = pd.read_csv('train_and_test2.csv')
+df1
+
+-----
+
+
+
+df=pd.DataFrame(df1) 
+df.head()
+
+-----
+
+
+df1.describe()
+
+-----
+
+
+df1.info()
+
+------
+
+
+df.columns
+
+----
+
+
+sns.set_style('whitegrid') 
+plt.figure(figsize=(10,4)) 
+sns.boxplot(x='Age',y='Sex', data=df, hue='2urvived') 
+
+-----
+
+OBSERVATIONS-
+Females: The median age of females who survived is slightly lower than the median age of females who did not survive. The box plot indicates that the majority of females who survived were between the ages of approximately 20 and 35, with a few outliers beyond that range. Females who did not survive show a wider age range, with the median age slightly higher than that of the survivors.
+Males: The median age of males who survived is lower than the median age of males who did not survive. The box plot suggests that the majority of males who survived were between the ages of approximately 25 and 35, with fewer outliers beyond that range. Males who did not survive exhibit a wider age range, with the median age slightly higher than that of the survivors.
+
+Age and Gender: Overall, the box plot reveals that the age distribution of females is generally younger than that of males, regardless of survival status. This is evident from the lower median age of females in both the survived and not survived groups compared to their male counterparts.
+
+Survival Rate: The box plot shows that both genders have higher survival rates among individuals who are younger, as indicated by the lower median age for survivors compared to those who did not survive. This suggests that age played a significant role in determining survival, with younger passengers more likely to survive regardless of gender.
+
+Outliers: The presence of outliers in both the survived and not survived groups for both genders indicates the existence of individuals who are either significantly older or younger compared to the majority of the passengers. These outliers may represent specific cases or circumstances that influenced survival outcomes.
+
