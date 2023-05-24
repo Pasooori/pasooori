@@ -1,0 +1,287 @@
+problem statement:
+
+ Data Wrangling, I
+Perform the following operations using Python on any open source dataset (e.g., data.csv)
+1. Import all the required Python Libraries.
+2. Locate an open source data from the web (e.g., https://www.kaggle.com). Provide a clear 
+ description of the data and its source (i.e., URL of the web site).
+3. Load the Dataset into pandas dataframe.
+4. Data Preprocessing: check for missing values in the data using pandas isnull(), describe() 
+function to get some initial statistics. Provide variable descriptions. Types of variables etc. 
+Check the dimensions of the data frame.
+5. Data Formatting and Data Normalization: Summarize the types of variables by checking 
+the data types (i.e., character, numeric, integer, factor, and logical) of the variables in the 
+data set. If variables are not in the correct data type, apply proper type conversions.
+6. Turn categorical variables into quantitative variables in Python.
+In addition to the codes and outputs, explain every operation that you do in the above steps and 
+explain everything that you do to import/read/scrape the data set
+
+
+
+//import all python libraries
+
+
+
+import pandas as pd
+
+import numpy as np
+
+
+
+www.kaggle.com
+
+//load dataset into pandas data frame
+
+df=pd.read_csv("abc.csv")
+
+print(df)
+
+Data preprocessing:-
+
+4.1 Describe Function:
+
+df.describe()//to get some initial statistics
+
+
+
+4.2Check dimension of data frame
+
+df.shape // will display no. row and col
+
+
+
+df.head(2)//first 2 row
+
+df.tail(1)//last 1 row
+
+
+
+4.3types of variable
+
+type(1)//int
+
+type("abc")//str
+
+type(4.2)//float
+
+
+
+df.dtypes(): datatype of each column
+
+
+
+4.4 check for missing values in data frame
+
+//Checking for missing values
+
+df.isnull()
+
+
+df.isnull().sum()
+
+
+df.isnull().sum().sum()
+
+
+
+//Fill null value with different value
+
+
+
+df2=df.fillna(value = 0)
+
+df2
+
+
+
+//Fill null value with previous row value
+
+
+
+df4=df.fillna(method='pad')
+
+df4
+
+
+
+//Fill  null value with next (Backword) row value
+
+
+
+df5=df.fillna(method='bfill')
+
+df5
+
+
+
+//Fill null value with previous  column value
+
+
+
+df6=df.fillna(method='pad',axis=1)
+
+df6
+
+
+
+//Fill null value with next (Backword) Column value
+
+
+
+df7=df.fillna(method='bfill',axis=1)
+
+df7
+
+
+
+
+
+//filling with different values in Null in different column
+
+Df7=df.fillna({'sepal_width':'abcd'})
+
+Df7
+
+
+
+//filling null value with the mean/max/min value of a column
+
+Df8=df.fillna(value=df['sepal_width'].mean())
+
+Df8
+
+
+
+Df9=df.fillna(value=df[' sepal_width  ].min())
+
+Df9
+
+
+
+Df10=df.fillna(value=df['sepal_width'].max())
+
+Df10
+
+
+
+//Drop such missing value use dropna() function
+
+
+
+df5=df.dropna()
+
+df5
+
+//replace Null value
+
+
+
+import numpy as np
+
+df5=df.replace(to_replace=np.nan,value=123)
+
+df5
+
+
+
+data formatting and data normalization in python
+
+
+
+
+
+//dtype() to check data type
+
+//astype() to change Data type
+
+
+
+df.dtypes
+
+//now change marks col data type from int to float
+
+
+
+df['sepal_width']=df['sepal_width'].astype(float)
+
+df['sepal_width'].dtypes
+
+
+
+
+
+
+
+//now change marks col data type from float  toint
+
+
+
+
+df['sepal_width']=df['sepal_width'].round(0).astype(int)
+
+df['sepal_width'].dtypes
+
+
+//pd.to-numeric function
+
+df['petal_length']=pd.to_numeric df['petal_length'].round(0), downcast='integer')
+
+df['petal_length'].dtypes
+
+
+
+
+
+//if we want to convert into integer
+
+
+
+
+
+df['petal_length']=pd.to_numeric(df['petal_length']).astype('Int32')
+
+df['petal_length'].dtypes
+
+
+
+how to convert categorical variables into quantitative variables in python
+
+import pandas as pd
+
+import numpy as np
+
+iris=pd.read_csv("iris.csv")
+
+print(df)
+
+
+
+iris['code']=pd.factorize(iris.Species)[0]
+
+
+
+iris.Species.value_counts()
+
+output
+
+setosa        50
+
+versicolor    50
+
+virginica     50
+
+Name: Species, dtype: int64
+
+
+
+df['species'].replace({'setosa':1, 'versicolor':2, 'virginica':3}, inplace=True)
+
+
+
+-----------------------------------------------
+
+dropna(): skips whole record
+
+note: store each operation in separate variables (df1,df2,df3)
+
+instead of df use df1(the dataset in which changes have been made)
